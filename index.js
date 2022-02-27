@@ -3,7 +3,9 @@ const findMyState = () => {
 
   const success = (postion) => {
     const latitude = postion.coords.latitude
-    const longtitude = postion.coords.longtitude
+    const longtitude = postion.coords.longitude
+    const location = latitude.toString() + ',' + longtitude.toString();
+    console.log(location)
 
     const geoApiUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longtitude}&localityLanguage=en`
 
@@ -19,15 +21,9 @@ const findMyState = () => {
   const error = () => {
     status.textContent = 'Unable to retireve your location'
   }
-  
-
-
   navigator.geolocation.getCurrentPosition(success,error);
 
 }
-
-
-
 document.querySelector('.find-state').addEventListener('click', findMyState)
 
 
